@@ -72,7 +72,7 @@ export function Footer() {
             © {new Date().getFullYear()} Saeora. All rights reserved.
           </p>
           <p className="text-xs text-white/20">
-            Influencer Marketing Agency · Food &amp; Kitchenware
+            Influencer Marketing Agency
           </p>
         </div>
       </div>

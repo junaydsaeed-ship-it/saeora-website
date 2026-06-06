@@ -42,7 +42,7 @@ export function ForBrands() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white max-w-xl">
               Reach the people
               <br />
-              who <span className="text-[#9E7C5C]">actually cook</span>
+              who <span className="text-[#9E7C5C]">trust creators</span>
             </h2>
             <p className="text-white/50 max-w-sm leading-relaxed lg:text-right">
               Your ideal customer is already following our creators. We make

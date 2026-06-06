@@ -14,12 +14,36 @@ export default function ContactPage() {
   const [role, setRole] = useState<Role>("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    // Simulate send — replace with your email service (Resend, Formspree, etc.)
-    await new Promise((r) => setTimeout(r, 1200));
+    setError("");
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      role,
+      brand: (form.elements.namedItem("brand") as HTMLInputElement)?.value ?? "",
+      platform: (form.elements.namedItem("platform") as HTMLInputElement)?.value ?? "",
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      setError(body.error ?? "Something went wrong. Please try again.");
+      setLoading(false);
+      return;
+    }
+
     setLoading(false);
     setSubmitted(true);
   }
@@ -65,8 +89,8 @@ export default function ContactPage() {
               </h1>
               <p className="text-white/50 leading-relaxed mb-14">
                 Whether you&apos;re a brand looking to grow through the right
-                creators, or a home cook creator looking for partnerships that
-                fit — we want to hear from you.
+                creators, or a creator looking for partnerships that fit — we
+                want to hear from you.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -191,6 +215,10 @@ export default function ContactPage() {
                     className="w-full bg-transparent border border-white/10 focus:border-[#9E7C5C] outline-none px-5 py-4 text-white placeholder:text-white/20 text-sm transition-colors resize-none"
                   />
                 </div>
+
+                {error && (
+                  <p className="text-sm text-red-400">{error}</p>
+                )}
 
                 <Button
                   type="submit"

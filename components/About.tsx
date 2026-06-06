@@ -33,9 +33,9 @@ export function About() {
             className="space-y-6"
           >
             <p className="text-white/70 text-lg leading-relaxed">
-              Saeora is an influencer marketing agency built specifically for the
-              food space — connecting brands with food creators who have built
-              genuine trust with their audiences.
+              Saeora is an influencer marketing agency connecting brands with
+              creators who have built genuine trust with their audiences — across
+              every niche, every platform.
             </p>
           </motion.div>
         </div>

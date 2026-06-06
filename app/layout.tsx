@@ -14,7 +14,19 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Saeora — Influencer Marketing Agency",
-  description: "Saeora connects food brands and kitchenware brands with the right home cook influencers. Premium influencer marketing for the food space.",
+  description: "Saeora is an influencer marketing agency that connects brands with the right creators. We make influencer marketing simple.",
+  openGraph: {
+    title: "Saeora — Influencer Marketing Agency",
+    description: "We connect brands with the right creators. Influencer marketing, made simple.",
+    url: "https://saeora.space",
+    siteName: "Saeora",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Saeora — Influencer Marketing Agency",
+    description: "We connect brands with the right creators. Influencer marketing, made simple.",
+  },
 };
 
 export default function RootLayout({
