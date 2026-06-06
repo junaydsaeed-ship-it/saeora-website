@@ -34,23 +34,9 @@ export function About() {
           >
             <p className="text-white/70 text-lg leading-relaxed">
               Saeora is an influencer marketing agency built specifically for the
-              food space. We work exclusively in the home cook niche — connecting
-              food and kitchenware brands with creators who have built genuine
-              trust with food-loving audiences.
+              food space — connecting brands with food creators who have built
+              genuine trust with their audiences.
             </p>
-            <p className="text-white/50 leading-relaxed">
-              No vanity metrics. No irrelevant placements. Just precise
-              matchmaking between brands that want to grow and creators whose
-              audiences are already listening.
-            </p>
-
-            {/* Divider line */}
-            <div className="pt-4 flex items-center gap-6">
-              <div className="w-12 h-px bg-[#9E7C5C]" />
-              <p className="text-xs tracking-[0.2em] uppercase text-white/30">
-                Food &amp; Kitchenware · Home Cooks · Real Reach
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>

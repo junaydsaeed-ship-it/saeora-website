@@ -4,6 +4,7 @@ import { About } from "@/components/About";
 import { ForBrands } from "@/components/ForBrands";
 import { ForCreators } from "@/components/ForCreators";
 import { HowItWorks } from "@/components/HowItWorks";
+import { CtaBanner } from "@/components/CtaBanner";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <ForBrands />
         <ForCreators />
         <HowItWorks />
+        <CtaBanner />
       </main>
       <Footer />
     </>

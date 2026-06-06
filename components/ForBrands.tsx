@@ -9,17 +9,17 @@ const benefits = [
   {
     icon: Target,
     title: "The Right Audience",
-    body: "We place your brand in front of home cooks who are actively engaged in food — not passive scrollers. Every partnership is handpicked for relevance.",
+    body: "Reach the right audience, save time, and boost your ROI with campaigns that actually convert. Every partnership is handpicked for relevance.",
   },
   {
     icon: Users,
     title: "Managed End-to-End",
-    body: "From creator identification and outreach to negotiation and delivery — we handle every step. You focus on your product; we handle the rest.",
+    body: "From creator selection and outreach to negotiation and delivery — we handle every step.",
   },
   {
     icon: MessageSquare,
     title: "Authentic Content",
-    body: "Home cook creators build deep trust with their audiences. That trust transfers to your brand when the partnership is the right fit.",
+    body: "Creators build deep trust with their audiences. That trust transfers to your brand when the partnership is the right fit.",
   },
 ];
 
@@ -45,8 +45,8 @@ export function ForBrands() {
               who <span className="text-[#9E7C5C]">actually cook</span>
             </h2>
             <p className="text-white/50 max-w-sm leading-relaxed lg:text-right">
-              If you sell food or kitchenware, your ideal customer is already
-              following our creators. We make the introduction.
+              Your ideal customer is already following our creators. We make
+              the introduction.
             </p>
           </div>
         </motion.div>

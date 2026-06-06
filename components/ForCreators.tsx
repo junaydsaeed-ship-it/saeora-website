@@ -13,8 +13,8 @@ const benefits = [
   },
   {
     icon: DollarSign,
-    title: "Fair Deals",
-    body: "We negotiate on your behalf to make sure your work is valued correctly. Your time and reach are worth more than you think.",
+    title: "Properly Compensated",
+    body: "We negotiate on your behalf to make sure your work is valued correctly.",
   },
   {
     icon: Shield,

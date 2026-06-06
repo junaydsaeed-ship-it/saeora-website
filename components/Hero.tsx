@@ -31,23 +31,18 @@ export function Hero() {
       />
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
-        {/* Eyebrow */}
-        <p className="text-xs tracking-[0.3em] uppercase text-white/40 mb-10">
-          Influencer Marketing Agency · Food &amp; Kitchenware
-        </p>
-
         {/* Headline */}
         <h1 className="font-black uppercase leading-none tracking-tight">
-          <span className="block text-[clamp(2.5rem,7vw,6rem)] text-white/90">
+          <span className="block text-[clamp(2rem,5.5vw,4.5rem)] text-white/90">
             We Connect
           </span>
 
           {/* Animated slot 1 */}
-          <span className="block relative h-[clamp(3.5rem,10vw,8.5rem)] overflow-hidden">
+          <span className="block relative h-[clamp(2.8rem,8vw,6.5rem)] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.span
                 key={`slot1-${index}`}
-                className="block text-[clamp(3rem,9.5vw,8rem)] text-[#9E7C5C]"
+                className="block text-[clamp(2.5rem,7.5vw,6rem)] text-[#9E7C5C]"
                 initial={{ y: "110%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 exit={{ y: "-110%", opacity: 0 }}
@@ -58,16 +53,16 @@ export function Hero() {
             </AnimatePresence>
           </span>
 
-          <span className="block text-[clamp(2.5rem,7vw,6rem)] text-white/90">
+          <span className="block text-[clamp(2rem,5.5vw,4.5rem)] text-white/90">
             With The Right
           </span>
 
           {/* Animated slot 2 */}
-          <span className="block relative h-[clamp(3.5rem,10vw,8.5rem)] overflow-hidden">
+          <span className="block relative h-[clamp(2.8rem,8vw,6.5rem)] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.span
                 key={`slot2-${index}`}
-                className="block text-[clamp(3rem,9.5vw,8rem)] text-white"
+                className="block text-[clamp(2.5rem,7.5vw,6rem)] text-white"
                 initial={{ y: "110%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 exit={{ y: "-110%", opacity: 0 }}
@@ -81,8 +76,8 @@ export function Hero() {
 
         {/* Subtitle */}
         <p className="mt-10 text-sm md:text-base tracking-wide text-white/50 max-w-lg mx-auto leading-relaxed">
-          A specialist agency matching home cook creators with food and
-          kitchenware brands that deserve a real audience.
+          A specialist agency connecting food creators with brands that
+          deserve a real audience.
         </p>
 
         {/* CTA */}
