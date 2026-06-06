@@ -76,8 +76,7 @@ export function Hero() {
 
         {/* Subtitle */}
         <p className="mt-10 text-sm md:text-base tracking-wide text-white/50 max-w-lg mx-auto leading-relaxed">
-          A specialist agency connecting food creators with brands that
-          deserve a real audience.
+          We make influencer marketing simple.
         </p>
 
         {/* CTA */}
