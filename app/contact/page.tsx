@@ -35,7 +35,7 @@ export default function ContactPage() {
     formData.forEach((value, key) => body.append(key, value.toString()));
 
     try {
-      const res = await fetch("/", {
+      const res = await fetch("/netlify-form.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
