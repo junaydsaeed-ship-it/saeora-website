@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useForm, ValidationError } from "@formspree/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Send } from "lucide-react";
@@ -17,16 +16,37 @@ export default function ContactPage() {
     return type === "brand" || type === "creator" ? type : "";
   });
   const [roleError, setRoleError] = useState("");
-  const [state, handleFormspreeSubmit] = useForm("mwvjvyky");
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     if (!role) {
-      e.preventDefault();
       setRoleError("Please select whether you are a brand or a creator.");
       return;
     }
     setRoleError("");
-    handleFormspreeSubmit(e);
+    setLoading(true);
+    setError("");
+
+    const formData = new FormData(e.currentTarget);
+    const body = new URLSearchParams();
+    formData.forEach((value, key) => body.append(key, value.toString()));
+
+    try {
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+      if (!res.ok) throw new Error("Network error");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -52,7 +72,7 @@ export default function ContactPage() {
 
       <main className="flex-1 pt-32 pb-24 px-6">
         <div className="max-w-2xl mx-auto">
-          {!state.succeeded ? (
+          {!submitted ? (
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -70,8 +90,17 @@ export default function ContactPage() {
                 want to hear from you.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Hidden field so Formspree captures the role value */}
+              <form
+                name="contact"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                {/* Required by Netlify Forms for AJAX submissions */}
+                <input type="hidden" name="form-name" value="contact" />
+                {/* Honeypot — bots fill this, humans don't */}
+                <input type="hidden" name="bot-field" />
+
+                {/* Role is managed by buttons, passed via hidden input */}
                 <input type="hidden" name="role" value={role} />
 
                 {/* Role selector */}
@@ -116,11 +145,6 @@ export default function ContactPage() {
                     placeholder="Your name"
                     className="w-full bg-transparent border border-white/10 focus:border-[#9E7C5C] outline-none px-5 h-12 text-white placeholder:text-white/20 text-sm transition-colors"
                   />
-                  <ValidationError
-                    field="name"
-                    errors={state.errors}
-                    className="mt-2 text-sm text-red-400 block"
-                  />
                 </div>
 
                 {/* Email */}
@@ -138,11 +162,6 @@ export default function ContactPage() {
                     required
                     placeholder="your@email.com"
                     className="w-full bg-transparent border border-white/10 focus:border-[#9E7C5C] outline-none px-5 h-12 text-white placeholder:text-white/20 text-sm transition-colors"
-                  />
-                  <ValidationError
-                    field="email"
-                    errors={state.errors}
-                    className="mt-2 text-sm text-red-400 block"
                   />
                 </div>
 
@@ -208,27 +227,18 @@ export default function ContactPage() {
                     placeholder="Tell us what you're looking for…"
                     className="w-full bg-transparent border border-white/10 focus:border-[#9E7C5C] outline-none px-5 py-4 text-white placeholder:text-white/20 text-sm transition-colors resize-none"
                   />
-                  <ValidationError
-                    field="message"
-                    errors={state.errors}
-                    className="mt-2 text-sm text-red-400 block"
-                  />
                 </div>
 
-                {/* Form-level errors (network / server) */}
-                <ValidationError
-                  errors={state.errors}
-                  className="text-sm text-red-400 block"
-                />
+                {error && <p className="text-sm text-red-400">{error}</p>}
 
                 <Button
                   type="submit"
                   size="lg"
-                  disabled={state.submitting}
+                  disabled={loading}
                   className="w-full gap-3"
                 >
-                  {state.submitting ? "Sending…" : "Send Message"}
-                  {!state.submitting && <Send className="w-4 h-4" />}
+                  {loading ? "Sending…" : "Send Message"}
+                  {!loading && <Send className="w-4 h-4" />}
                 </Button>
               </form>
 
