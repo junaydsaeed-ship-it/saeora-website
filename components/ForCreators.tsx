@@ -25,7 +25,7 @@ const benefits = [
 
 export function ForCreators() {
   return (
-    <section id="creators" className="py-32 px-6 border-t border-white/5">
+    <section id="creators" className="py-20 md:py-32 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -33,7 +33,7 @@ export function ForCreators() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-20"
+          className="mb-12 md:mb-20"
         >
           <p className="text-xs tracking-[0.3em] uppercase text-[#9E7C5C] mb-6">
             For Creators
@@ -51,7 +51,7 @@ export function ForCreators() {
           </div>
         </motion.div>
 
-        {/* Benefit cards — offset layout */}
+        {/* Benefit cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
           {benefits.map((b, i) => (
             <motion.div
@@ -60,8 +60,12 @@ export function ForCreators() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="bg-[#1d1d1b] p-10 flex flex-col gap-6 group hover:bg-[#232320] transition-colors"
+              className="relative bg-[#1d1d1b] p-6 md:p-10 flex flex-col gap-6 group hover:bg-[#232320] transition-colors border-l-2 border-transparent hover:border-white/20 overflow-hidden"
             >
+              {/* Background ordinal */}
+              <span className="absolute top-4 right-4 text-[80px] font-black leading-none text-white/[0.035] select-none pointer-events-none">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 transition-colors">
                 <b.icon className="w-4 h-4 text-white/60" />
               </div>

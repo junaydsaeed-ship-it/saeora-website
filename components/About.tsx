@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 export function About() {
   return (
-    <section className="py-32 px-6 border-t border-white/5">
+    <section className="py-20 md:py-32 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: label */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
@@ -34,8 +34,7 @@ export function About() {
           >
             <p className="text-white/70 text-lg leading-relaxed">
               Saeora is an influencer marketing agency connecting brands with
-              creators who have built genuine trust with their audiences — across
-              every niche, every platform.
+              creators who have built genuine trust with their audiences.
             </p>
           </motion.div>
         </div>

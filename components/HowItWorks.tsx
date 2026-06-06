@@ -22,7 +22,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-32 px-6 border-t border-white/5">
+    <section id="how-it-works" className="py-20 md:py-32 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -30,7 +30,7 @@ export function HowItWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-20"
+          className="mb-12 md:mb-20"
         >
           <p className="text-xs tracking-[0.3em] uppercase text-[#9E7C5C] mb-6">
             The Process
@@ -49,9 +49,9 @@ export function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="group grid grid-cols-1 md:grid-cols-[120px_1fr_1fr] gap-8 md:gap-16 p-10 border-t border-white/5 hover:border-[#9E7C5C]/20 transition-colors"
+              className="group grid grid-cols-1 md:grid-cols-[120px_1fr_1fr] gap-6 md:gap-16 p-6 md:p-10 border-t border-white/5 hover:border-[#9E7C5C]/20 transition-colors"
             >
-              <span className="text-5xl font-black text-white/10 group-hover:text-[#9E7C5C]/20 transition-colors leading-none">
+              <span className="text-5xl font-black text-white/10 group-hover:text-[#9E7C5C]/30 transition-colors leading-none">
                 {step.number}
               </span>
               <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide text-white self-center">

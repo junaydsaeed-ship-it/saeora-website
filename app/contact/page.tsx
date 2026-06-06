@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Send } from "lucide-react";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
@@ -11,56 +11,34 @@ import { Button } from "@/components/ui/button";
 type Role = "brand" | "creator" | "";
 
 export default function ContactPage() {
-  const [role, setRole] = useState<Role>("");
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [role, setRole] = useState<Role>(() => {
+    if (typeof window === "undefined") return "";
+    const type = new URLSearchParams(window.location.search).get("type");
+    return type === "brand" || type === "creator" ? type : "";
+  });
+  const [roleError, setRoleError] = useState("");
+  const [state, handleFormspreeSubmit] = useForm("mwvjvyky");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-
-    const form = e.currentTarget;
-    const data = {
-      name: (form.elements.namedItem("name") as HTMLInputElement).value,
-      email: (form.elements.namedItem("email") as HTMLInputElement).value,
-      role,
-      brand: (form.elements.namedItem("brand") as HTMLInputElement)?.value ?? "",
-      platform: (form.elements.namedItem("platform") as HTMLInputElement)?.value ?? "",
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
-    };
-
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    if (!res.ok) {
-      const body = await res.json().catch(() => ({}));
-      setError(body.error ?? "Something went wrong. Please try again.");
-      setLoading(false);
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    if (!role) {
+      e.preventDefault();
+      setRoleError("Please select whether you are a brand or a creator.");
       return;
     }
-
-    setLoading(false);
-    setSubmitted(true);
+    setRoleError("");
+    handleFormspreeSubmit(e);
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-[100dvh] flex flex-col">
       {/* Minimal header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#1d1d1b]/95 backdrop-blur-sm border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-          <Link href="/">
-            <Image
-              src="/saeora-logo-white.png"
-              alt="Saeora"
-              width={110}
-              height={33}
-              className="h-8 w-auto object-contain"
-            />
+          <Link
+            href="/"
+            className="text-base font-black uppercase tracking-[0.18em] text-white hover:text-white/80 transition-colors"
+          >
+            Saeora
           </Link>
           <Link
             href="/"
@@ -74,13 +52,12 @@ export default function ContactPage() {
 
       <main className="flex-1 pt-32 pb-24 px-6">
         <div className="max-w-2xl mx-auto">
-          {!submitted ? (
+          {!state.succeeded ? (
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              {/* Heading */}
               <p className="text-xs tracking-[0.3em] uppercase text-[#9E7C5C] mb-6">
                 Get In Touch
               </p>
@@ -94,6 +71,9 @@ export default function ContactPage() {
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Hidden field so Formspree captures the role value */}
+                <input type="hidden" name="role" value={role} />
+
                 {/* Role selector */}
                 <div>
                   <label className="block text-xs tracking-widest uppercase text-white/40 mb-3">
@@ -104,7 +84,7 @@ export default function ContactPage() {
                       <button
                         key={r}
                         type="button"
-                        onClick={() => setRole(r)}
+                        onClick={() => { setRole(r); setRoleError(""); }}
                         className={`flex-1 h-12 text-xs tracking-widest uppercase border transition-all duration-200 ${
                           role === r
                             ? "border-[#9E7C5C] text-[#9E7C5C] bg-[#9E7C5C]/10"
@@ -115,6 +95,9 @@ export default function ContactPage() {
                       </button>
                     ))}
                   </div>
+                  {roleError && (
+                    <p className="mt-2 text-sm text-red-400">{roleError}</p>
+                  )}
                 </div>
 
                 {/* Name */}
@@ -132,6 +115,11 @@ export default function ContactPage() {
                     required
                     placeholder="Your name"
                     className="w-full bg-transparent border border-white/10 focus:border-[#9E7C5C] outline-none px-5 h-12 text-white placeholder:text-white/20 text-sm transition-colors"
+                  />
+                  <ValidationError
+                    field="name"
+                    errors={state.errors}
+                    className="mt-2 text-sm text-red-400 block"
                   />
                 </div>
 
@@ -151,9 +139,14 @@ export default function ContactPage() {
                     placeholder="your@email.com"
                     className="w-full bg-transparent border border-white/10 focus:border-[#9E7C5C] outline-none px-5 h-12 text-white placeholder:text-white/20 text-sm transition-colors"
                   />
+                  <ValidationError
+                    field="email"
+                    errors={state.errors}
+                    className="mt-2 text-sm text-red-400 block"
+                  />
                 </div>
 
-                {/* Brand/platform name (conditional) */}
+                {/* Brand name (conditional) */}
                 {role === "brand" && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
@@ -176,6 +169,7 @@ export default function ContactPage() {
                   </motion.div>
                 )}
 
+                {/* Platform handle (conditional) */}
                 {role === "creator" && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
@@ -214,20 +208,27 @@ export default function ContactPage() {
                     placeholder="Tell us what you're looking for…"
                     className="w-full bg-transparent border border-white/10 focus:border-[#9E7C5C] outline-none px-5 py-4 text-white placeholder:text-white/20 text-sm transition-colors resize-none"
                   />
+                  <ValidationError
+                    field="message"
+                    errors={state.errors}
+                    className="mt-2 text-sm text-red-400 block"
+                  />
                 </div>
 
-                {error && (
-                  <p className="text-sm text-red-400">{error}</p>
-                )}
+                {/* Form-level errors (network / server) */}
+                <ValidationError
+                  errors={state.errors}
+                  className="text-sm text-red-400 block"
+                />
 
                 <Button
                   type="submit"
                   size="lg"
-                  disabled={loading}
+                  disabled={state.submitting}
                   className="w-full gap-3"
                 >
-                  {loading ? "Sending…" : "Send Message"}
-                  {!loading && <Send className="w-4 h-4" />}
+                  {state.submitting ? "Sending…" : "Send Message"}
+                  {!state.submitting && <Send className="w-4 h-4" />}
                 </Button>
               </form>
 

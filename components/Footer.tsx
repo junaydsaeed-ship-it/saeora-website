@@ -14,7 +14,7 @@ export function Footer() {
               alt="Saeora"
               width={100}
               height={30}
-              className="h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+              className="h-11 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
             />
           </Link>
 

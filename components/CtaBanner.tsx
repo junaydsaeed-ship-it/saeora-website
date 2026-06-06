@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export function CtaBanner() {
   return (
-    <section className="py-32 px-6 border-t border-white/5">
+    <section className="py-20 md:py-32 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -29,12 +29,12 @@ export function CtaBanner() {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg">
-              <Link href="/contact" className="gap-3">
+              <Link href="/contact?type=brand" className="gap-3">
                 Get In Touch <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="/contact">Join Our Roster</Link>
+              <Link href="/contact?type=creator">Join Our Roster</Link>
             </Button>
           </div>
         </motion.div>

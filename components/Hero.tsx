@@ -20,7 +20,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center px-6 overflow-hidden">
       {/* Subtle background texture */}
       <div
         className="absolute inset-0 pointer-events-none"
