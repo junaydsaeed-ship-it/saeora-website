@@ -31,6 +31,11 @@ export function Hero() {
       />
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
+        {/* Brand label — visible to crawlers and users */}
+        <p className="text-xs tracking-[0.3em] uppercase text-[#9E7C5C] mb-8">
+          Saeora — Influencer Marketing Agency
+        </p>
+
         {/* Headline */}
         <h1 className="font-black uppercase leading-none tracking-tight">
           <span className="block text-[clamp(2rem,5.5vw,4.5rem)] text-white/90">

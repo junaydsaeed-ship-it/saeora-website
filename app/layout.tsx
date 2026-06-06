@@ -14,22 +14,48 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://saeora.com"),
-  title: "Saeora — Influencer Marketing Agency",
-  description: "Saeora is an influencer marketing agency that connects brands with the right creators. We make influencer marketing simple.",
+  title: {
+    default: "Saeora — Influencer Marketing Agency",
+    template: "%s | Saeora",
+  },
+  description:
+    "Saeora is an influencer marketing agency that connects brands with the right creators. We make influencer marketing simple.",
+  keywords: [
+    "Saeora",
+    "Saeora Agency",
+    "influencer marketing agency",
+    "brand creator partnerships",
+    "creator marketing",
+    "influencer agency",
+  ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Saeora — Influencer Marketing Agency",
-    description: "We connect brands with the right creators. Influencer marketing, made simple.",
+    description:
+      "Saeora connects brands with the right creators. Influencer marketing, made simple.",
     url: "https://saeora.com",
     siteName: "Saeora",
     type: "website",
+    locale: "en_GB",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Saeora — Influencer Marketing Agency",
-    description: "We connect brands with the right creators. Influencer marketing, made simple.",
+    description:
+      "Saeora connects brands with the right creators. Influencer marketing, made simple.",
+    site: "@saeoraagency",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
   },
 };
 
@@ -44,6 +70,49 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* JSON-LD structured data — tells Google this is the authoritative Saeora entity */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "Saeora",
+                alternateName: "Saeora Agency",
+                description:
+                  "Saeora is an influencer marketing agency that connects brands with the right creators. We make influencer marketing simple.",
+                url: "https://saeora.com",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://saeora.com/saeora-logo-white.png",
+                },
+                sameAs: ["https://www.instagram.com/saeora.agency/"],
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  email: "junayd@saeora.space",
+                  contactType: "customer service",
+                  url: "https://saeora.com/contact",
+                },
+                areaServed: "Worldwide",
+                knowsAbout: [
+                  "Influencer Marketing",
+                  "Creator Marketing",
+                  "Brand Partnerships",
+                  "Social Media Marketing",
+                ],
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "Saeora",
+                url: "https://saeora.com",
+                description:
+                  "Saeora is an influencer marketing agency that connects brands with the right creators.",
+              },
+            ]),
+          }}
+        />
         {/* Hidden form so Netlify's build scanner registers all field names */}
         <div aria-hidden="true" style={{ display: "none" }}>
           <form name="contact" data-netlify="true" netlify-honeypot="bot-field">
