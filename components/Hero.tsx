@@ -31,10 +31,8 @@ export function Hero() {
       />
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
-        {/* Brand label — semantic H1, visible to crawlers and users */}
-        <h1 className="text-xs tracking-[0.3em] uppercase text-[#9E7C5C] mb-8">
-          Saeora — Influencer Marketing Agency
-        </h1>
+        {/* Semantic H1 for SEO + screen readers — not shown visually */}
+        <h1 className="sr-only">Saeora — Influencer Marketing Agency</h1>
 
         {/* Visual headline (decorative, rotating) */}
         <div className="font-black uppercase leading-none tracking-tight">
