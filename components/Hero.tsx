@@ -31,13 +31,13 @@ export function Hero() {
       />
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
-        {/* Brand label — visible to crawlers and users */}
-        <p className="text-xs tracking-[0.3em] uppercase text-[#9E7C5C] mb-8">
+        {/* Brand label — semantic H1, visible to crawlers and users */}
+        <h1 className="text-xs tracking-[0.3em] uppercase text-[#9E7C5C] mb-8">
           Saeora — Influencer Marketing Agency
-        </p>
+        </h1>
 
-        {/* Headline */}
-        <h1 className="font-black uppercase leading-none tracking-tight">
+        {/* Visual headline (decorative, rotating) */}
+        <div className="font-black uppercase leading-none tracking-tight">
           <span className="block text-[clamp(2rem,5.5vw,4.5rem)] text-white/90">
             We Connect
           </span>
@@ -77,7 +77,7 @@ export function Hero() {
               </motion.span>
             </AnimatePresence>
           </span>
-        </h1>
+        </div>
 
         {/* Subtitle */}
         <p className="mt-10 text-sm md:text-base tracking-wide text-white/50 max-w-lg mx-auto leading-relaxed">

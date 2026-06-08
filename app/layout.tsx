@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://saeora.com"),
   title: {
-    default: "Saeora — Influencer Marketing Agency",
+    default: "Saeora | Influencer Marketing Agency Connecting Brands & Creators",
     template: "%s | Saeora",
   },
   description:
-    "Saeora is an influencer marketing agency that connects brands with the right creators. We make influencer marketing simple.",
+    "Saeora is an influencer marketing agency that connects brands with the right creators. We manage influencer partnerships end-to-end — strategy, outreach, and delivery. Get in touch.",
   keywords: [
     "Saeora",
     "Saeora Agency",
@@ -45,7 +45,6 @@ export const metadata: Metadata = {
     title: "Saeora — Influencer Marketing Agency",
     description:
       "Saeora connects brands with the right creators. Influencer marketing, made simple.",
-    site: "@saeoraagency",
   },
   robots: {
     index: true,
@@ -78,14 +77,22 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "Organization",
+                "@id": "https://saeora.com/#organization",
                 name: "Saeora",
-                alternateName: "Saeora Agency",
+                alternateName: ["Saeora Agency", "Saeora Influencer Marketing"],
                 description:
                   "Saeora is an influencer marketing agency that connects brands with the right creators. We make influencer marketing simple.",
                 url: "https://saeora.com",
                 logo: {
                   "@type": "ImageObject",
                   url: "https://saeora.com/saeora-logo-white.png",
+                  width: 512,
+                  height: 512,
+                },
+                image: "https://saeora.com/opengraph-image",
+                founder: {
+                  "@type": "Person",
+                  name: "Junayd Saeed",
                 },
                 sameAs: ["https://www.instagram.com/saeora.agency/"],
                 contactPoint: {
@@ -105,8 +112,10 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
+                "@id": "https://saeora.com/#website",
                 name: "Saeora",
                 url: "https://saeora.com",
+                publisher: { "@id": "https://saeora.com/#organization" },
                 description:
                   "Saeora is an influencer marketing agency that connects brands with the right creators.",
               },

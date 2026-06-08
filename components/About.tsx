@@ -18,9 +18,9 @@ export function About() {
               About Saeora
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-none tracking-tight text-white">
-              Where Food
+              Where Brands
               <br />
-              Meets <span className="text-[#9E7C5C]">Influence</span>
+              Meet <span className="text-[#9E7C5C]">Influence</span>
             </h2>
           </motion.div>
 
@@ -35,6 +35,14 @@ export function About() {
             <p className="text-white/70 text-lg leading-relaxed">
               Saeora is an influencer marketing agency connecting brands with
               creators who have built genuine trust with their audiences.
+            </p>
+            <p className="text-white/50 leading-relaxed">
+              We make influencer marketing simple — handling everything from
+              creator selection and outreach to negotiation, contracts, and
+              delivery. Whether you&apos;re a brand looking for reach or a creator
+              looking for the right partnerships, Saeora runs the process end to
+              end so the work feels effortless and the results speak for
+              themselves.
             </p>
           </motion.div>
         </div>
