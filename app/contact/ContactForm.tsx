@@ -250,8 +250,11 @@ export function ContactForm() {
                 </Button>
               </form>
 
-              {/* Alt contact */}
-              <div className="mt-16 pt-10 border-t border-white/5 flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+              {/* Alt contact — data-nosnippet keeps email/IG out of Google search snippets */}
+              <div
+                data-nosnippet
+                className="mt-16 pt-10 border-t border-white/5 flex flex-col sm:flex-row gap-6 items-start sm:items-center"
+              >
                 <div>
                   <p className="text-xs tracking-widest uppercase text-white/30 mb-1">
                     Email directly
