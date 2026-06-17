@@ -39,21 +39,27 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-24 flex items-center justify-between">
         {/* Logo */}
-        <Link
-          href="/"
-          className="hover:opacity-80 transition-opacity"
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
         >
-          <Image
-            src="/saeora-logo-colour.png"
-            alt="Saeora"
-            width={196}
-            height={100}
-            priority
-            className="h-9 w-auto object-contain"
-          />
-        </Link>
+          <Link
+            href="/"
+            className="inline-block hover:opacity-80 transition-opacity"
+          >
+            <Image
+              src="/saeora-logo-colour.png"
+              alt="Saeora"
+              width={196}
+              height={100}
+              priority
+              className="h-12 w-auto object-contain"
+            />
+          </Link>
+        </motion.div>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-10">

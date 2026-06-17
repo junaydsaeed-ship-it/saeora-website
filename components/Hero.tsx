@@ -35,7 +35,12 @@ export function Hero() {
         <h1 className="sr-only">Saeora — Influencer Marketing Agency</h1>
 
         {/* Visual headline (decorative, rotating) */}
-        <div className="font-black uppercase leading-none tracking-tight">
+        <motion.div
+          className="font-black uppercase leading-none tracking-tight"
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+        >
           <span className="block text-[clamp(2rem,5.5vw,4.5rem)] text-white/90">
             We Connect
           </span>
@@ -75,15 +80,25 @@ export function Hero() {
               </motion.span>
             </AnimatePresence>
           </span>
-        </div>
+        </motion.div>
 
         {/* Subtitle */}
-        <p className="mt-10 text-sm md:text-base tracking-wide text-white/50 max-w-lg mx-auto leading-relaxed">
+        <motion.p
+          className="mt-10 text-sm md:text-base tracking-wide text-white/50 max-w-lg mx-auto leading-relaxed"
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
+        >
           We make influencer marketing simple.
-        </p>
+        </motion.p>
 
         {/* CTA */}
-        <div className="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <motion.div
+          className="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center"
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.9 }}
+        >
           <Button asChild size="lg">
             <Link href="/contact" className="gap-3">
               Get In Touch <ArrowRight className="w-4 h-4" />
@@ -94,7 +109,7 @@ export function Hero() {
               How It Works
             </Link>
           </Button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}

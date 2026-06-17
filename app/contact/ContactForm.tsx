@@ -54,7 +54,7 @@ export function ContactForm() {
     <div className="min-h-[100dvh] flex flex-col">
       {/* Minimal header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#1d1d1b]/95 backdrop-blur-sm border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-24 flex items-center justify-between">
           <Link
             href="/"
             className="hover:opacity-80 transition-opacity"
@@ -65,7 +65,7 @@ export function ContactForm() {
               width={196}
               height={100}
               priority
-              className="h-9 w-auto object-contain"
+              className="h-12 w-auto object-contain"
             />
           </Link>
           <Link
