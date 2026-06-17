@@ -10,10 +10,10 @@ export function Footer() {
           {/* Logo */}
           <Link href="/">
             <Image
-              src="/saeora-logo-white.png"
+              src="/saeora-logo-colour.png"
               alt="Saeora"
-              width={100}
-              height={30}
+              width={159}
+              height={100}
               className="h-11 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
             />
           </Link>

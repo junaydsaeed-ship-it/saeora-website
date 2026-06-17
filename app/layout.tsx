@@ -85,9 +85,9 @@ export default function RootLayout({
                 url: "https://saeora.com",
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://saeora.com/saeora-logo-white.png",
-                  width: 512,
-                  height: 512,
+                  url: "https://saeora.com/saeora-logo-colour.png",
+                  width: 1819,
+                  height: 1146,
                 },
                 image: "https://saeora.com/opengraph-image",
                 founder: {
