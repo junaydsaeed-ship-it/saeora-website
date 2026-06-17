@@ -12,7 +12,7 @@ export function Footer() {
             <Image
               src="/saeora-logo-colour.png"
               alt="Saeora"
-              width={159}
+              width={196}
               height={100}
               className="h-11 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
             />

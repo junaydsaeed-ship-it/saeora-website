@@ -48,7 +48,7 @@ export function Navbar() {
           <Image
             src="/saeora-logo-colour.png"
             alt="Saeora"
-            width={159}
+            width={196}
             height={100}
             priority
             className="h-9 w-auto object-contain"
