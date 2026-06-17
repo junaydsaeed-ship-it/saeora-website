@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Send } from "lucide-react";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { Button } from "@/components/ui/button";
@@ -56,9 +57,16 @@ export function ContactForm() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
           <Link
             href="/"
-            className="text-base font-black uppercase tracking-[0.18em] text-white hover:text-white/80 transition-colors"
+            className="hover:opacity-80 transition-opacity"
           >
-            Saeora
+            <Image
+              src="/saeora-logo-colour.png"
+              alt="Saeora"
+              width={159}
+              height={100}
+              priority
+              className="h-9 w-auto object-contain"
+            />
           </Link>
           <Link
             href="/"

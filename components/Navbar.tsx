@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
@@ -39,12 +40,19 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-        {/* Wordmark */}
+        {/* Logo */}
         <Link
           href="/"
-          className="text-base font-black uppercase tracking-[0.18em] text-white hover:text-white/80 transition-colors"
+          className="hover:opacity-80 transition-opacity"
         >
-          Saeora
+          <Image
+            src="/saeora-logo-colour.png"
+            alt="Saeora"
+            width={159}
+            height={100}
+            priority
+            className="h-9 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop nav */}
